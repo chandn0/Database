@@ -15,3 +15,8 @@ But we can see that this problem has been solved in recent years in the blockcha
 >for more information follow this notion
 
 https://time-angora-689.notion.site/Knowledge-base-62a64987400f44918bdd93b96b4ba385
+
+# key Feature of the protocol
+- Reader can directly pay to the writer using crypto.
+- Fractional ownership of articles.
+- Writer can suggest improvements to others articles and get rewarded by with article ownership.
