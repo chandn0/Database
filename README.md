@@ -21,6 +21,6 @@ https://time-angora-689.notion.site/Knowledge-base-62a64987400f44918bdd93b96b4ba
 - Fractional ownership of articles.
 - Writer can suggest improvements to others articles and get rewarded by with article ownership.
 
-#protocol design
--Storage of articles and frontend  will be on IPFS.
--Backed will be on the blockchain. 
+# protocol design
+- Storage of articles and frontend  will be on IPFS.
+- Backed will be on the blockchain. 
