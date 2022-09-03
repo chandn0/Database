@@ -3,9 +3,6 @@ import "./HomeAuth.css";
 import axios from "axios";
 import BlogCard from "../components/BlogCard";
 import { useMoralisWeb3Api } from "react-moralis";
-
-
-
 const HomeAuth = () => {
 
   const [blogs, setBlogs] = useState();

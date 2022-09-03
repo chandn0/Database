@@ -9,14 +9,14 @@ import "./App.css";
 import { ConnectButton } from "web3uikit";
 import logo from "./images/medium.png";
 import { useMoralis } from "react-moralis";
-
+import EditBlog from "./pages/EditBlog";
 const App = () => {
   const { isAuthenticated } = useMoralis();
 
   return (
     <>
 
-    {isAuthenticated ? (
+      {isAuthenticated ? (
         <div className="App">
           <div className="sideBar">
             <Sidebar />
@@ -25,6 +25,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomeAuth />} />
               <Route path="/newStory" element={<NewStory />} />
+              <Route path="/editblog" element={<EditBlog />} />
               <Route path="/myBlogs" element={<MyBlogs />} />
               <Route path="/blog/:url" element={<Blog />} />
             </Routes>
@@ -33,13 +34,13 @@ const App = () => {
             <Rightbar />
           </div>
         </div>
-    ) : (
-      <div className="unAuth">
-          <img src={logo} alt= "logo" height="200px"/>
+      ) : (
+        <div className="unAuth">
+          <img src={logo} alt="logo" height="200px" />
           <ConnectButton />
-      </div>
+        </div>
 
-    )}
+      )}
     </>
   );
 };
