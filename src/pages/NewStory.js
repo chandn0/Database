@@ -5,6 +5,7 @@ import {
   useMoralis,
   useWeb3ExecuteFunction,
 } from "react-moralis";
+import { contractabi, contractlocation } from '../config/constants';
 
 
 const NewStory = () => {
@@ -16,32 +17,12 @@ const NewStory = () => {
   const { Moralis, account } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
 
-  const mint = async (account, uri) => {
+  const mint = async (uri) => {
     let options = {
-      contractAddress: "0x712E53EeD91aE1A2CC852fAFFA254b7D6D5CB14a",
-      functionName: "safeMint",
-      abi: [
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-            {
-              internalType: "string",
-              name: "uri",
-              type: "string",
-            },
-          ],
-          name: "safeMint",
-          outputs: [],
-          stateMutability: "payable",
-          type: "function",
-        },
-      ],
+      functionName: "createarticle",
+      abi: contractabi,
+      contractAddress: contractlocation,
       params: {
-        to: account,
         uri: uri,
       },
       msgValue: Moralis.Units.ETH(0),
@@ -80,8 +61,7 @@ const NewStory = () => {
         }
       );
       const nftResult = await uploadNftMetada(result.ipfs());
-
-      await mint(account, nftResult.ipfs());
+      await mint(nftResult.ipfs());
     } catch (error) {
       alert(error.message);
     }

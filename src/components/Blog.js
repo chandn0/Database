@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import "./Blog.css";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { Url } from "../config/constants";
 import { Link } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from "react-router-dom";
 const Blog = () => {
+  const location = useLocation();
+  const [title, setTitle] = useState(location.state.btitle);
+  const [text, setText] = useState(location.state.btext);
+  const [Id, setId] = useState(location.state.Id);
 
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-
+  const navigate = useNavigate();
 
   const { url } = useParams();
 
@@ -24,20 +27,20 @@ const Blog = () => {
     if (!title || !text) {
       fetchBlogContent();
     }
-  }, [text, title,]);
+  }, [text, title]);
+
+  const clickHandler = () => {
+    navigate(`/editblog`, { state: { title: title, text: text, Id: Id } });
+  };
 
   return (
     <div className="singleBlog">
       <div className="singleBlogWrapper">
         <div className="singleBlogContent">
-          <Link to="/editblog" className="link">
-            <div className="menuItems">
-              <EditIcon title={title}
-                text={text}
-
-              />
-            </div>
-          </Link>
+          <div className="menuItems" onClick={clickHandler}>
+            <EditIcon
+            />
+          </div>
           <h1 className="singleBlogTitle">{title}</h1>
           <p className="singleBlogText">{text}</p>
         </div>

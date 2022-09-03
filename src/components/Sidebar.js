@@ -6,7 +6,8 @@ import BookIcon from "@mui/icons-material/Book";
 import Logout from "@mui/icons-material/Logout";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import logo from "../images/m.png";
-
+import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
+import EditRoadIcon from '@mui/icons-material/EditRoad';
 const Sidebar = () => {
   const { logout } = useMoralis();
 
@@ -34,6 +35,17 @@ const Sidebar = () => {
               <RateReviewIcon />
             </div>
           </Link>
+          <Link to="/requested" className="link">
+            <div className="menuItems">
+              <EditRoadIcon />
+            </div>
+          </Link>
+          <Link to="/requests" className="link">
+            <div className="menuItems">
+              <FileDownloadDoneIcon />
+            </div>
+          </Link>
+
         </div>
         <div className="logout" onClick={logOut}>
           <Logout />
