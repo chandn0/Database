@@ -7,7 +7,7 @@ import HomeAuth from "./pages/HomeAuth";
 import Rightbar from "./components/Rightbar";
 import "./App.css";
 import { ConnectButton } from "web3uikit";
-import logo from "./images/medium.png";
+import logo from "./images/logo.jpeg";
 import { useMoralis } from "react-moralis";
 import EditBlog from "./components/EditBlog";
 import Requests from "./pages/Requests";
@@ -39,7 +39,8 @@ const App = () => {
         </div>
       ) : (
         <div className="unAuth">
-          <img src={logo} alt="logo" height="200px" />
+          <img src={logo} alt="logo" height="100px" style={{ borderRadius: '8px' }} />
+          <h2>pencil</h2>
           <ConnectButton />
         </div>
 

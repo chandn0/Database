@@ -5,7 +5,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import BookIcon from "@mui/icons-material/Book";
 import Logout from "@mui/icons-material/Logout";
 import RateReviewIcon from "@mui/icons-material/RateReview";
-import logo from "../images/m.png";
+import logo from "../images/logo.jpeg";
 import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
 import EditRoadIcon from '@mui/icons-material/EditRoad';
 const Sidebar = () => {

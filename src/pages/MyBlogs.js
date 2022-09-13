@@ -44,6 +44,7 @@ const MyBlogs = () => {
   return (
     <>
       <div>
+        <div className="myBlogsHeader">My Blogs</div>
         {JSON.parse(localStorage.getItem('myblogs_Id')) ? (
           <div>
             {JSON.parse(localStorage.getItem('myblogs_Id')).map((number, i) =>
@@ -52,8 +53,8 @@ const MyBlogs = () => {
             )}
           </div>) : (
           <div>
-            <h1>No Blogs</h1>
-            <button onClick={clickHandler} > Create First Blog</button>
+            <h1 className="myBlogsHeader">No Blogs</h1>
+            <button onClick={clickHandler} className='myBlogsHeader'> Create First Blog</button>
           </div>
         )}
       </div>

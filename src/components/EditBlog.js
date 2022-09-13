@@ -18,14 +18,14 @@ const EditBlog = () => {
     const { Moralis, account } = useMoralis();
     const contractProcessor = useWeb3ExecuteFunction();
 
-    const mint = async (uri, Ids) => {
+    const mint = async (uri) => {
         let options = {
             functionName: "requestchange",
             abi: contractabi,
             contractAddress: contractlocation,
             params: {
                 uri: uri,
-                Id: Ids,
+                articleId: Ids,
             },
         }
 
@@ -45,7 +45,6 @@ const EditBlog = () => {
 
 
     const uploadFile = async (event) => {
-        console.log(Ids);
         event.preventDefault();
         const textArray = text.split();
         const metadata = {
@@ -63,17 +62,15 @@ const EditBlog = () => {
                 }
             );
             const nftResult = await uploadNftMetada(result.ipfs());
-
-            await mint(nftResult.ipfs(), Ids);
+            await mint(nftResult.ipfs());
         } catch (error) {
             alert(error.message);
         }
 
     }
+
     const uploadNftMetada = async (url) => {
         const metadataNft = {
-            image:
-                "https://ipfs.moralis.io:2053/ipfs/QmWEsG4ayh75BMk2H1CowAdALPjsi3fD7CSZ6qxNM1yNnz/image/moralis.png",
             description: title,
             externalUrl: url,
         };

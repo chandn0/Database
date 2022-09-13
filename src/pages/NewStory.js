@@ -6,7 +6,11 @@ import {
   useWeb3ExecuteFunction,
 } from "react-moralis";
 import { contractabi, contractlocation } from '../config/constants';
+import Input from "./Input";
+import { Remarkable } from "remarkable"
+import { Link } from "react-router-dom";
 
+const md = new Remarkable()
 
 const NewStory = () => {
 
@@ -69,8 +73,6 @@ const NewStory = () => {
   }
   const uploadNftMetada = async (url) => {
     const metadataNft = {
-      image:
-        "https://ipfs.moralis.io:2053/ipfs/QmWEsG4ayh75BMk2H1CowAdALPjsi3fD7CSZ6qxNM1yNnz/image/moralis.png",
       description: title,
       externalUrl: url,
     };
@@ -111,7 +113,15 @@ const NewStory = () => {
           <button className="writeSubmit" type="submit">
             Publish
           </button>
+          <h2 style={{ textAlign: 'center' }}>Preview</h2>
+          <a style={{ textAlign: 'center' }} href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noopener noreferrer"><h6>Markdown  cheat sheet</h6></a>
+          <div
+            className="content"
+            style={{ marginLeft: '10vh' }}
+            dangerouslySetInnerHTML={{ __html: md.render(text) }}
+          ></div>
         </form>
+
       </div>
     </>
   );

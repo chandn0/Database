@@ -4207,7 +4207,7 @@
   "resolved" "https://registry.npmjs.org/arg/-/arg-5.0.1.tgz"
   "version" "5.0.1"
 
-"argparse@^1.0.7":
+"argparse@^1.0.10", "argparse@^1.0.7":
   "integrity" "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg=="
   "resolved" "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz"
   "version" "1.0.10"
@@ -4413,6 +4413,13 @@
   "integrity" "sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg=="
   "resolved" "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz"
   "version" "2.1.2"
+
+"autolinker@^3.11.0":
+  "integrity" "sha512-KY8yhlwvuQpA7exkkvHsmk0chdrtS0ZRO7XoPfs7w8N3kpiGPjYNDrQ0lIMx2GrKFZzGK/QSEd2Sx5SYtSNBKg=="
+  "resolved" "https://registry.npmjs.org/autolinker/-/autolinker-3.16.0.tgz"
+  "version" "3.16.0"
+  dependencies:
+    "tslib" "^2.3.0"
 
 "autoprefixer@^10.4.7":
   "integrity" "sha512-ypHju4Y2Oav95SipEcCcI5J7CGPuvz8oat7sUtYj3ClK44bldfvtvcxK6IEK++7rqB7YchDGzweZIBG+SD0ZAA=="
@@ -7078,7 +7085,16 @@
     "rustbn.js" "~0.2.0"
     "safe-buffer" "^5.1.1"
 
-"ethers@5.6.0":
+"ethers-react@^1.1.0":
+  "integrity" "sha512-71bbhTXsEqZ0Y8lCwgSQReN5g+UsYF9BDMZcXE3Wr9Nt5Vu9Jy1sYsasXr5Y3xPRsB93EXjlbUNBVp470IISTw=="
+  "resolved" "https://registry.npmjs.org/ethers-react/-/ethers-react-1.1.0.tgz"
+  "version" "1.1.0"
+  dependencies:
+    "ethers" "^5.6.0"
+    "react" "^17.0.2"
+    "react-dom" "^17.0.2"
+
+"ethers@^5.6.0", "ethers@5.6.0":
   "integrity" "sha512-00FP71jt6bW3ndO5DhgH9mLIZhoCGnAKFLu8qig5KmV03ubEChKf2ilB3g6fX512tTYo+tSMDJ5WpCJWdBHkBQ=="
   "resolved" "https://registry.npmjs.org/ethers/-/ethers-5.6.0.tgz"
   "version" "5.6.0"
@@ -11778,6 +11794,14 @@
   "resolved" "https://registry.npmjs.org/relateurl/-/relateurl-0.2.7.tgz"
   "version" "0.2.7"
 
+"remarkable@^2.0.1":
+  "integrity" "sha512-YJyMcOH5lrR+kZdmB0aJJ4+93bEojRZ1HGDn9Eagu6ibg7aVZhc3OWbbShRid+Q5eAfsEqWxpe+g5W5nYNfNiA=="
+  "resolved" "https://registry.npmjs.org/remarkable/-/remarkable-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "argparse" "^1.0.10"
+    "autolinker" "^3.11.0"
+
 "renderkid@^3.0.0":
   "integrity" "sha512-q/7VIQA8lmM1hF+jn+sFSPWGlMkSAeNYcPLmDQx2zzuiDfaLrOmumR8iaUKlenFgh0XRPIUeSPlH3A+AW3Z5pg=="
   "resolved" "https://registry.npmjs.org/renderkid/-/renderkid-3.0.0.tgz"
@@ -13169,7 +13193,7 @@
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
 
-"tslib@^2.0.0", "tslib@^2.0.3", "tslib@^2.3.1":
+"tslib@^2.0.0", "tslib@^2.0.3", "tslib@^2.3.0", "tslib@^2.3.1":
   "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
   "version" "2.4.0"

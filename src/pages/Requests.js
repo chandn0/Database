@@ -1,16 +1,13 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { useEffect, useState } from "react";
 import "./MyBlogs";
-import { useNavigate } from "react-router-dom";
-import { useMoralisWeb3Api, useMoralis, useWeb3ExecuteFunction, useWeb3Contract, fetch } from "react-moralis";
+import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import Fetchrequests from '../components/Fetchrequests';
 import { contractabi, contractlocation } from '../config/constants';
+
 const Requests = () => {
-  const { isInitialized, isAuthenticated, account } = useMoralis();
-  const navigate = useNavigate();
-  const [local, setlocal] = useState();
+  const { account } = useMoralis();
   const [obj, setobj] = useState();
-  const [o, seto] = useState();
   const { data, error, fetch, isFetching, isLoading } =
     useWeb3ExecuteFunction({
       abi: contractabi,
@@ -34,21 +31,20 @@ const Requests = () => {
       }
       localStorage.setItem('requestedblogs', JSON.stringify(co));
       localStorage.setItem("Inrequestedblogs", true);
-      seto(co);
-      console.log(co);
+
     }
   }, [data]);
   return (
-    <div>
+    <div style={{ marginTop: '10px' }}>
       {JSON.parse(localStorage.getItem('requestedblogs')) ? (
+        JSON.parse(localStorage.getItem('requestedblogs')).map((number, i) => {
+          return (<Fetchrequests key={i}
+            requestId={number} />)
+        }
+        )
+      ) : (
         <div>
-          {JSON.parse(localStorage.getItem('requestedblogs')).map((number, i) =>
-            <Fetchrequests key={i}
-              requestId={number} />
-          )}
-        </div>) : (
-        <div>
-          <h2 >Improve other's articles </h2>
+          <h2 style={{ textAlign: 'center' }}>Improve other's articles </h2>
         </div>
       )}
     </div>
