@@ -45,7 +45,6 @@ const Requestedcard = ({ articleId }) => {
                     )}
                 </div>) : (
                 <div style={{ textAlign: 'center' }} >
-                    <h1 >No requests</h1>
                 </div>
             )}
 

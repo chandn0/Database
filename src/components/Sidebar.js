@@ -18,31 +18,31 @@ const Sidebar = () => {
   return (
     <>
       <div className="siderContent">
-        <img className="logo" src={logo}></img>
+        <img className="logo" src={logo} alt="logo"></img>
         <div className="menu">
-          <Link to="/" className="link">
+          <Link to="/" className="link" >
             <div className="menuItems">
-              <HomeIcon />
+              Home
             </div>
           </Link>
           <Link to="/myBlogs" className="link">
             <div className="menuItems">
-              <BookIcon />
+              MyBlogs
             </div>
           </Link>
           <Link to="/newStory" className="link">
             <div className="menuItems">
-              <RateReviewIcon />
+              New
             </div>
           </Link>
-          <Link to="/requested" className="link">
+          <Link to="/edited" className="link">
             <div className="menuItems">
-              <EditRoadIcon />
+              Edited
             </div>
           </Link>
           <Link to="/requests" className="link">
             <div className="menuItems">
-              <FileDownloadDoneIcon />
+              Requests
             </div>
           </Link>
 
