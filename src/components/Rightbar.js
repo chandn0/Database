@@ -1,21 +1,30 @@
 import "./Rightbar.css";
 import { Input } from "web3uikit";
+import { ethers } from "ethers";
+import { useState, useEffect } from "react";
+import { useMoralis, useWeb3ExecuteFunction, executeFunction } from "react-moralis";
+import { contractabi, contractlocation } from "../config/constants";
 
 const Rightbar = () => {
-  const trends = [
-    {
-      text: "Real Performance Paradox",
-    },
-    {
-      text: "The Email Scam That Nearly Worked On Me",
-    },
-    {
-      text: "The forgotten benefits of “low tech” user interfaces",
-    },
-    {
-      text: "Become a Web3 Developer with just simple JS...",
-    },
-  ];
+  const { account, } = useMoralis();
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+  const Mint = async () => {
+    const contract = new ethers.Contract(contractlocation, contractabi, provider);
+    let k = await contract.authorslist();
+    console.log(k);
+    for (let i = 0; i < k.length; i++) {
+
+    }
+    return k;
+
+  }
+  useEffect(() => {
+    Mint();
+
+  }, [account]);
+
+
 
   return (
     <>

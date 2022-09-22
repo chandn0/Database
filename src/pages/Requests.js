@@ -22,7 +22,6 @@ const Requests = () => {
                 <button onClick={clickHandler} > Create First Blog</button>
             </div>
         )}
-
         </div>
     );
 };

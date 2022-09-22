@@ -5,6 +5,9 @@ contract web3wiki {
     string[] public articles;
     mapping(address => uint256[]) public writers_articles;
     mapping(uint256 => mapping(address => uint8)) ownershare; //mapping ownershare articleId to address to share
+    mapping(address => string) public profile;
+    mapping(address => address[]) public following;
+    address[] public authors;
 
     constructor() {
         articles.push("0");
@@ -15,6 +18,7 @@ contract web3wiki {
 
     function createarticle(string memory uri) public {
         //new article
+        pushauthor(msg.sender);
         articles.push(uri);
         writers_articles[msg.sender].push(articles.length - 1);
         ownershare[articles.length - 1][msg.sender] = 100;
@@ -133,5 +137,22 @@ contract web3wiki {
         returns (uint256[] memory)
     {
         return articles_to_request[articleid];
+    }
+
+    function pushauthor(address autho) internal {
+        bool tr = false;
+        for (uint i = 0; i < authors.length; i++) {
+            if (autho == authors[i]) {
+                tr = true;
+                break;
+            }
+        }
+        if (tr == false) {
+            authors.push(autho);
+        }
+    }
+
+    function authorslist() public view returns (address[] memory) {
+        return authors;
     }
 }

@@ -27,10 +27,10 @@ const HomeAuth = () => {
     let k = await contract.articles(ID);
     return k;
   }
+
   useEffect(() => {
-    Mint();
-    // let fff = fetch();
-    // console.log(fff);
+    // Mint();
+
   }, [account]);
 
   useEffect(() => {

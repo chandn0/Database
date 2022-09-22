@@ -12,6 +12,7 @@ import { useMoralis } from "react-moralis";
 import EditBlog from "./components/EditBlog";
 import Requests from "./pages/Requests";
 import Edited from "./pages/Edited";
+import Profile from "./pages/Profile";
 const App = () => {
   const { isAuthenticated } = useMoralis();
 
@@ -31,6 +32,7 @@ const App = () => {
               <Route path="/blog/" element={<Blog />} />
               <Route path="/requests" element={<Requests />} />
               <Route path="/edited" element={<Edited />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
           <div className="rightBar">

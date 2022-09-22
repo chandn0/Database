@@ -8,6 +8,7 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 import logo from "../images/logo.jpeg";
 import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
 import EditRoadIcon from '@mui/icons-material/EditRoad';
+
 const Sidebar = () => {
   const { logout } = useMoralis();
 
@@ -43,6 +44,11 @@ const Sidebar = () => {
           <Link to="/requests" className="link">
             <div className="menuItems">
               Requests
+            </div>
+          </Link>
+          <Link to="/profile" className="link">
+            <div className="menuItems">
+              Profile
             </div>
           </Link>
 
