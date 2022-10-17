@@ -5,7 +5,7 @@ contract web3wiki {
     string[] public articles;
     mapping(address => uint256[]) public writers_articles;
     mapping(uint256 => mapping(address => uint8)) ownershare; //mapping ownershare articleId to address to share
-    mapping(address => string) public profile;
+    mapping(address => string) public profile; // mapping address to username
     mapping(address => address[]) public following;
     address[] public authors;
 
@@ -154,5 +154,13 @@ contract web3wiki {
 
     function authorslist() public view returns (address[] memory) {
         return authors;
+    }
+
+    function getarticles() public view returns (string[] memory) {
+        return articles;
+    }
+
+    function setprofile(string memory uri) public {
+        profile[msg.sender] = uri;
     }
 }
