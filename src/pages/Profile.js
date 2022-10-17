@@ -6,17 +6,38 @@ import { contractabi, contractlocation } from "../config/constants";
 import "./NewStory.css"
 
 const Profile = () => {
-    const { account, } = useMoralis();
+    const { Moralis, account } = useMoralis();
+
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const [name, setName] = useState("");
     const [bio, setBio] = useState("");
     const { saveFile } = useMoralisFile();
+    const contractProcessor = useWeb3ExecuteFunction();
 
     const update = async (uri) => {
-        const signer = provider.getSigner(account);
-        const contract = new ethers.Contract(contractlocation, contractabi, signer);
-        let k = await contract.update(uri);
-        console.log(k)
+        let options = {
+            functionName: "update",
+            abi: contractabi,
+            contractAddress: contractlocation,
+            params: {
+                uri: uri,
+            },
+            msgValue: Moralis.Units.ETH(0),
+        }
+        await contractProcessor.fetch({
+            params: options,
+            onSuccess: () => {
+                alert("Succesful Mint");
+            },
+            onError: (error) => {
+                alert(error.message);
+            },
+        });
+
+        // const signer = provider.getSigner(account);
+        // const contract = new ethers.Contract(contractlocation, contractabi, signer);
+        // let k = await contract.update(uri);
+        // console.log(k)
     }
 
     const uploadFile = async (event) => {
@@ -50,7 +71,7 @@ const Profile = () => {
 
                         <input
                             className="writeInput"
-                            placeholder="Title"
+                            placeholder="Name"
                             type="text"
                             autoFocus={true}
                             value={name}
@@ -62,7 +83,7 @@ const Profile = () => {
                     <div className="writeFormGroup" >
                         <input
                             className="writeInput"
-                            placeholder="bio"
+                            placeholder="write about what articles you write"
                             autoFocus={true}
                             type="text"
                             value={bio}

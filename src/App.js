@@ -8,13 +8,15 @@ import Rightbar from "./components/Rightbar";
 import "./App.css";
 import { ConnectButton } from "web3uikit";
 import logo from "./images/logo.jpeg";
-import { useMoralis } from "react-moralis";
+import { useMoralis, useChain } from "react-moralis";
 import EditBlog from "./components/EditBlog";
 import Requests from "./pages/Requests";
 import Edited from "./pages/Edited";
 import Profile from "./pages/Profile";
+import About from "./pages/About";
+import { useEffect } from "react";
 const App = () => {
-  const { isAuthenticated } = useMoralis();
+  const { isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, enableWeb3 } = useMoralis();
 
   return (
     <>
@@ -33,6 +35,7 @@ const App = () => {
               <Route path="/requests" element={<Requests />} />
               <Route path="/edited" element={<Edited />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/about" element={<About />} />
             </Routes>
           </div>
           <div className="rightBar">

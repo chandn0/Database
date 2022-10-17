@@ -3,7 +3,7 @@ export const Url = "https://ipfs.io/ipfs";
 export const logoM = "https://ipfs.io/ipfs/QmWEsG4ayh75BMk2H1CowAdALPjsi3fD7CSZ6qxNM1yNnz/image/moralis.png";
 
 export const sampleURI = "https://ipfs.io/ipfs/Qmd7DuscoYu3bqBavGxcxvoR1yZDhp8B4sNncyorZphucM"
-export const contractlocation = "0x5ca8cEc4D001EC8bDAA04e4841c5569A592f38f0";
+export const contractlocation = "0xc9796cf5cd95E97AB516081e94d3957eE7D8f047";
 export const contractabi = [
     {
         "inputs": [
@@ -60,11 +60,6 @@ export const contractabi = [
         "type": "function"
     },
     {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
         "inputs": [
             {
                 "internalType": "string",
@@ -72,10 +67,15 @@ export const contractabi = [
                 "type": "string"
             }
         ],
-        "name": "update",
+        "name": "setprofile",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
+    },
+    {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
     },
     {
         "inputs": [
@@ -222,6 +222,19 @@ export const contractabi = [
                 "internalType": "address",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getarticles",
+        "outputs": [
+            {
+                "internalType": "string[]",
+                "name": "",
+                "type": "string[]"
             }
         ],
         "stateMutability": "view",

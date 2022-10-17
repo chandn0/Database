@@ -51,6 +51,11 @@ const Sidebar = () => {
               Profile
             </div>
           </Link>
+          <Link to="/about" className="link">
+            <div className="menuItems">
+              About
+            </div>
+          </Link>
 
         </div>
         <div className="logout" onClick={logOut}>

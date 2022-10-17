@@ -14,8 +14,8 @@ root.render(
   <React.StrictMode>
     <MoralisProvider
       initializeOnMount
-      appId={"fqlmyfoLlxvonMCXZY6wBiUEbxVgT2BwBKFsSWro"}
-      serverUrl={"https://jjzs6v35wunk.usemoralis.com:2053/server"}
+      appId={"9fVxHpqZ6gFSomUtfK0csdjJG8jSsxg7ZDXx8TMh"}
+      serverUrl={"https://iuyghlttmlej.grandmoralis.com:2053/server"}
     >
       <NotificationProvider>
         <Router>

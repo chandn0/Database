@@ -4,38 +4,44 @@ import { useNavigate } from "react-router-dom";
 import { useMoralis, useWeb3ExecuteFunction, } from "react-moralis";
 import FetchblogCard from "../components/fetchblog";
 import { contractabi, contractlocation } from "../config/constants";
+import { ethers } from "ethers";
+
 const MyBlogs = () => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+
   const { account } = useMoralis();
   const navigate = useNavigate();
   const [obj, setobj] = useState();
-  const { data, error, fetch, isFetching, isLoading } =
-    useWeb3ExecuteFunction({
-      abi: contractabi,
-      contractAddress: contractlocation,
-      functionName: "articleswriten",
-      params: {
-        ad: account,
-      },
-    });
+
 
   useEffect(() => {
-    fetch()
-  }, [account]);
-
-  useEffect(() => {
-    setobj(data);
     let k;
     if (obj) {
       let co = [];
       for (let i = 0; i < obj.length; i++) {
+
         k = obj[i].toNumber();
         co.push(k);
+
       }
       localStorage.setItem('myblogs_Id', JSON.stringify(co));
-      localStorage.setItem("Inblog", true);
     }
+  }, [obj]);
 
-  }, [data]);
+  async function getl() {
+    try {
+      const contract = new ethers.Contract(contractlocation, contractabi, provider);
+      let ledger = await contract.articleswriten(account);
+      setobj(ledger);
+    } catch (err) {
+      console.error(err);
+
+    }
+  }
+  useEffect(() => {
+
+    getl();
+  }, []);
 
   function clickHandler() {
     navigate("/newStory");
@@ -45,7 +51,7 @@ const MyBlogs = () => {
     <>
       <div>
         <div className="myBlogsHeader">My Blogs</div>
-        {JSON.parse(localStorage.getItem('myblogs_Id')) ? (
+        {JSON.parse(localStorage.getItem('myblogs_Id')).length > 0 ? (
           <div>
             {JSON.parse(localStorage.getItem('myblogs_Id')).map((number, i) =>
               <FetchblogCard key={i}
@@ -53,8 +59,8 @@ const MyBlogs = () => {
             )}
           </div>) : (
           <div>
-            <h1 className="myBlogsHeader">No Blogs</h1>
-            <button onClick={clickHandler} className='myBlogsHeader'> Create First Blog</button>
+            <h3 >No Blogs</h3>
+            <button onClick={clickHandler} className='createbutton'> Create First Blog</button>
           </div>
         )}
       </div>
