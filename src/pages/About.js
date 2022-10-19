@@ -5,6 +5,9 @@ class About extends Component {
     render() {
         return (
             <div className='about'>
+                <br />
+                <br />
+                <br />
                 <p>Creating a joint knowledge base, where protocol forces to produce high-quality content in collaboration. The closest one is Wikipedia, but the problem with Wikipedia is that it does not pay its editors any money, So most editors have moved to other websites like Medium.
                 </p>
                 <br />

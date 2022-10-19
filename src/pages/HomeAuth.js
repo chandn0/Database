@@ -33,34 +33,36 @@ const HomeAuth = () => {
 
 
 
-  useEffect(() => {
-    let k;
-    if (obj) {
-      let co = [];
-      for (let i = 0; i < obj.length; i++) {
-        if (i % 2 != 0) {
-          k = obj[i];
-          co.push(k);
-        }
-      }
-      localStorage.setItem('blogs', JSON.stringify(co));
-    }
-  }, [obj]);
+  // useEffect(() => {
+  //   console.log("in obj");
+  //   let k;
+  //   if (obj) {
+  //     let co = [];
+  //     for (let i = 0; i < obj.length; i++) {
+  //       if (i !== 0) {
+  //         k = obj[i];
+  //         co.push(k);
+  //       }
+  //     }
+  //     console.log(co);
+  //     localStorage.setItem('blogs', JSON.stringify(co));
+  //   }
+  // }, [obj]);
 
-  async function getl() {
-    try {
-      const contract = new ethers.Contract(contractlocation, contractabi, provider);
-      let ledger = await contract.getarticles();
-      setobj(ledger);
-    } catch (err) {
-      console.error(err);
+  // async function getl() {
+  //   try {
+  //     const contract = new ethers.Contract(contractlocation, contractabi, provider);
+  //     let ledger = await contract.getarticles();
+  //     setobj(ledger);
+  //   } catch (err) {
+  //     console.error(err);
 
-    }
-  }
-  useEffect(() => {
-
-    getl();
-  }, []);
+  //   }
+  // }
+  // useEffect(() => {
+  //   console.log('empty');
+  //   getl();
+  // }, [account]);
 
   function clickHandler() {
     navigate("/newStory");
@@ -72,7 +74,7 @@ const HomeAuth = () => {
         {JSON.parse(localStorage.getItem('blogs')) &&
           JSON.parse(localStorage.getItem('blogs')).map((uri, i) => {
             return (
-              <BlogCard uri={uri} key={i} articleId={i} />
+              <BlogCard uri={uri} key={i} articleId={i + 1} />
             );
           }
           )}

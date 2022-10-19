@@ -14,9 +14,114 @@ import Requests from "./pages/Requests";
 import Edited from "./pages/Edited";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
-import { useEffect } from "react";
+import { ethers } from "ethers";
+import { useState, useEffect } from "react";
+import { contractabi, contractlocation } from "./config/constants";
+
 const App = () => {
-  const { isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, enableWeb3 } = useMoralis();
+  const { isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, enableWeb3, account } = useMoralis();
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const [articles, setarticles] = useState([]);
+  const [myarticles, setmyarticles] = useState();
+  const [editedarticlesrequestid, seteditedarticlesrequestid] = useState();
+
+
+  async function fetcharticles() {
+    try {
+      const contract = new ethers.Contract(contractlocation, contractabi, provider);
+      let ledger = await contract.getarticles();
+      setarticles(ledger);
+    } catch (err) {
+      console.error(err);
+
+    }
+  }
+
+  async function fetchmyarticles() {
+    try {
+      const contract = new ethers.Contract(contractlocation, contractabi, provider);
+      let ledger = await contract.articleswriten(account);
+      setmyarticles(ledger);
+    } catch (err) {
+      console.error(err);
+
+    }
+  }
+
+  async function fetchmyedits() {
+    try {
+      const contract = new ethers.Contract(contractlocation, contractabi, provider);
+      let ledger = await contract.getrequestsofaddress(account);
+      seteditedarticlesrequestid(ledger);
+    } catch (err) {
+      console.error(err);
+
+    }
+  }
+
+
+  useEffect(() => {
+    let k;
+    if (articles) {
+      let co = [];
+      for (let i = 0; i < articles.length; i++) {
+        if (i !== 0) {
+          k = articles[i];
+          co.push(k);
+        }
+      }
+      console.log(co);
+      localStorage.setItem('blogs', JSON.stringify(co));
+    }
+  }, [articles]);
+
+
+  useEffect(() => {
+    console.log('empty');
+    fetcharticles();
+  }, [account]);
+
+  useEffect(() => {
+    // fetch()
+    fetchmyedits();
+  }, [account]);
+
+  useEffect(() => {
+    let k;
+    if (editedarticlesrequestid) {
+      let co = [];
+      for (let i = 0; i < editedarticlesrequestid.length; i++) {
+        k = editedarticlesrequestid[i].toNumber();
+        co.push(k);
+      }
+      console.log(co);
+      localStorage.setItem('editedrequestid', JSON.stringify(co));
+      localStorage.setItem("Inrequestedblogs", true);
+
+    }
+  }, [editedarticlesrequestid]);
+
+
+  useEffect(() => {
+    let k;
+    if (myarticles) {
+      let co = [];
+      for (let i = 0; i < myarticles.length; i++) {
+
+        k = myarticles[i].toNumber();
+        co.push(k);
+
+      }
+      localStorage.setItem('myblogs_Id', JSON.stringify(co));
+    }
+  }, [myarticles]);
+
+
+  useEffect(() => {
+    console.log("in blogs my blogs");
+    fetchmyarticles();
+  }, []);
+
 
   return (
     <>

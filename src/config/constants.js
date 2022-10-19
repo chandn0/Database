@@ -3,7 +3,7 @@ export const Url = "https://ipfs.io/ipfs";
 export const logoM = "https://ipfs.io/ipfs/QmWEsG4ayh75BMk2H1CowAdALPjsi3fD7CSZ6qxNM1yNnz/image/moralis.png";
 
 export const sampleURI = "https://ipfs.io/ipfs/Qmd7DuscoYu3bqBavGxcxvoR1yZDhp8B4sNncyorZphucM"
-export const contractlocation = "0xc9796cf5cd95E97AB516081e94d3957eE7D8f047";
+export const contractlocation = "0x9C3dFd5bd35560d0A8e90ac91Ac0Aba1cF1aaac7";
 export const contractabi = [
     {
         "inputs": [
@@ -73,11 +73,6 @@ export const contractabi = [
         "type": "function"
     },
     {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
         "inputs": [
             {
                 "internalType": "uint256",
@@ -88,6 +83,35 @@ export const contractabi = [
         "name": "voterequest",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "addresstorequestIds",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -172,62 +196,6 @@ export const contractabi = [
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "authors",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "authorslist",
-        "outputs": [
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "following",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
         "inputs": [],
         "name": "getarticles",
         "outputs": [
@@ -235,6 +203,25 @@ export const contractabi = [
                 "internalType": "string[]",
                 "name": "",
                 "type": "string[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "ad",
+                "type": "address"
+            }
+        ],
+        "name": "getrequestsofaddress",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
             }
         ],
         "stateMutability": "view",
@@ -306,11 +293,6 @@ export const contractabi = [
                         "type": "string"
                     },
                     {
-                        "internalType": "address[]",
-                        "name": "acceptedaddress",
-                        "type": "address[]"
-                    },
-                    {
                         "internalType": "uint8",
                         "name": "acceptedamount",
                         "type": "uint8"
@@ -319,6 +301,30 @@ export const contractabi = [
                 "internalType": "struct web3wiki.request",
                 "name": "",
                 "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "requestidvoted",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
             }
         ],
         "stateMutability": "view",

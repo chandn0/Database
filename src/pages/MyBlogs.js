@@ -11,37 +11,37 @@ const MyBlogs = () => {
 
   const { account } = useMoralis();
   const navigate = useNavigate();
-  const [obj, setobj] = useState();
+  // const [myarticles, setmyarticles] = useState();
 
 
-  useEffect(() => {
-    let k;
-    if (obj) {
-      let co = [];
-      for (let i = 0; i < obj.length; i++) {
+  // useEffect(() => {
+  //   let k;
+  //   if (myarticles) {
+  //     let co = [];
+  //     for (let i = 0; i < myarticles.length; i++) {
 
-        k = obj[i].toNumber();
-        co.push(k);
+  //       k = myarticles[i].toNumber();
+  //       co.push(k);
 
-      }
-      localStorage.setItem('myblogs_Id', JSON.stringify(co));
-    }
-  }, [obj]);
+  //     }
+  //     localStorage.setItem('myblogs_Id', JSON.stringify(co));
+  //   }
+  // }, [myarticles]);
 
-  async function getl() {
-    try {
-      const contract = new ethers.Contract(contractlocation, contractabi, provider);
-      let ledger = await contract.articleswriten(account);
-      setobj(ledger);
-    } catch (err) {
-      console.error(err);
+  // async function fetchmyarticles() {
+  //   try {
+  //     const contract = new ethers.Contract(contractlocation, contractabi, provider);
+  //     let ledger = await contract.articleswriten(account);
+  //     setmyarticles(ledger);
+  //   } catch (err) {
+  //     console.error(err);
 
-    }
-  }
-  useEffect(() => {
-
-    getl();
-  }, []);
+  //   }
+  // }
+  // useEffect(() => {
+  //   console.log("in blogs my blogs");
+  //   fetchmyarticles();
+  // }, []);
 
   function clickHandler() {
     navigate("/newStory");
@@ -51,7 +51,7 @@ const MyBlogs = () => {
     <>
       <div>
         <div className="myBlogsHeader">My Blogs</div>
-        {JSON.parse(localStorage.getItem('myblogs_Id')).length > 0 ? (
+        {JSON.parse(localStorage.getItem('myblogs_Id')) ? (
           <div>
             {JSON.parse(localStorage.getItem('myblogs_Id')).map((number, i) =>
               <FetchblogCard key={i}

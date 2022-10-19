@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const Requestedcard = ({ articleId }) => {
 
     const { isInitialized, isAuthenticated, account } = useMoralis();
+
     const [obj, setobj] = useState();
 
     const { data, error, fetch, isFetching, isLoading } =
@@ -18,9 +19,12 @@ const Requestedcard = ({ articleId }) => {
                 articleid: articleId,
             },
         });
+
+
     useEffect(() => {
         fetch();
     }, [account]);
+
     useEffect(() => {
         setobj(data);
         let k;
@@ -30,16 +34,15 @@ const Requestedcard = ({ articleId }) => {
                 k = obj[i].toNumber();
                 co.push(k);
             }
-            localStorage.setItem('requests', JSON.stringify(co));
-
+            setobj(co)
         }
     }, [data]);
 
     return (
         <div style={{ marginTop: '10px' }}>
-            {(JSON.parse(localStorage.getItem('requests')).length !== 0) ? (
+            {(obj) ? (
                 <div>
-                    {JSON.parse(localStorage.getItem('requests')).map((number, i) =>
+                    {obj.map((number, i) =>
                         <Fetchrequests key={i}
                             requestId={number} />
                     )}

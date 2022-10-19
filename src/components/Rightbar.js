@@ -6,23 +6,23 @@ import { useMoralis, useWeb3ExecuteFunction, executeFunction } from "react-moral
 import { contractabi, contractlocation } from "../config/constants";
 
 const Rightbar = () => {
-  const { account, } = useMoralis();
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  // const { account, } = useMoralis();
+  // const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-  const Mint = async () => {
-    const contract = new ethers.Contract(contractlocation, contractabi, provider);
-    let k = await contract.authorslist();
-    console.log(k);
-    for (let i = 0; i < k.length; i++) {
+  // const Mint = async () => {
+  //   const contract = new ethers.Contract(contractlocation, contractabi, provider);
+  //   let k = await contract.authorslist();
+  //   console.log(k);
+  //   for (let i = 0; i < k.length; i++) {
 
-    }
-    return k;
+  //   }
+  //   return k;
 
-  }
-  useEffect(() => {
-    Mint();
+  // }
+  // useEffect(() => {
+  //   Mint();
 
-  }, [account]);
+  // }, [account]);
 
 
 

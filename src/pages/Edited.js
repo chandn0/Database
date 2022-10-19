@@ -4,40 +4,60 @@ import "./MyBlogs";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import Fetchrequests from '../components/Fetchrequests';
 import { contractabi, contractlocation } from '../config/constants';
+import { ethers } from "ethers";
 
 const Edited = () => {
   const { account } = useMoralis();
-  const [obj, setobj] = useState();
-  const { data, error, fetch, isFetching, isLoading } =
-    useWeb3ExecuteFunction({
-      abi: contractabi,
-      contractAddress: contractlocation,
-      functionName: "articleedited",
-      params: {
-        ad: account,
-      },
-    });
-  useEffect(() => {
-    fetch()
-  }, [account]);
-  useEffect(() => {
-    setobj(data);
-    let k;
-    if (obj) {
-      let co = [];
-      for (let i = 0; i < obj.length; i++) {
-        k = obj[i].toNumber();
-        co.push(k);
-      }
-      localStorage.setItem('requestedblogs', JSON.stringify(co));
-      localStorage.setItem("Inrequestedblogs", true);
+  const [editedarticlesrequestid, seteditedarticlesrequestid] = useState();
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-    }
-  }, [data]);
+  // const { data, error, fetch, isFetching, isLoading } =
+  //   useWeb3ExecuteFunction({
+  //     abi: contractabi,
+  //     contractAddress: contractlocation,
+  //     functionName: "getrequestsofaddress",
+  //     params: {
+  //       ad: account,
+  //     },
+  //   });
+
+  // async function fetchmyedits() {
+  //   try {
+  //     const contract = new ethers.Contract(contractlocation, contractabi, provider);
+  //     let ledger = await contract.getrequestsofaddress(account);
+  //     seteditedarticlesrequestid(ledger);
+  //   } catch (err) {
+  //     console.error(err);
+
+  //   }
+  // }
+
+
+  // useEffect(() => {
+  //   // fetch()
+  //   fetchmyedits();
+  // }, [account]);
+
+  // useEffect(() => {
+  //   // seteditedarticlesrequestid(data);
+  //   let k;
+  //   if (editedarticlesrequestid) {
+  //     let co = [];
+  //     for (let i = 0; i < editedarticlesrequestid.length; i++) {
+  //       k = editedarticlesrequestid[i].toNumber();
+  //       co.push(k);
+  //     }
+  //     console.log(co);
+  //     localStorage.setItem('editedrequestid', JSON.stringify(co));
+  //     localStorage.setItem("Inrequestedblogs", true);
+
+  //   }
+  // }, [editedarticlesrequestid]);
+
   return (
     <div style={{ marginTop: '10px' }}>
-      {JSON.parse(localStorage.getItem('requestedblogs')) ? (
-        JSON.parse(localStorage.getItem('requestedblogs')).map((number, i) => {
+      {JSON.parse(localStorage.getItem('editedrequestid')) ? (
+        JSON.parse(localStorage.getItem('editedrequestid')).map((number, i) => {
           return (<Fetchrequests key={i}
             requestId={number} />)
         }

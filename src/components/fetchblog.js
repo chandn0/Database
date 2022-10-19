@@ -27,7 +27,7 @@ const FetchblogCard = ({ articleId }) => {
   useEffect(() => {
     setobj(data);
     if (obj) {
-
+      console.log(obj);
       localStorage.setItem("articleId", obj);
     }
   }, [data]);

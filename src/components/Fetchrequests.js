@@ -13,6 +13,7 @@ const Fetchrequests = ({ requestId }) => {
     const { isInitialized, isAuthenticated, account } = useMoralis();
     const [obj, setobj] = useState();
     const [on, seton] = useState();
+
     const { data, error, fetch, isFetching, isLoading } =
         useWeb3ExecuteFunction({
             abi: contractabi,
@@ -38,7 +39,6 @@ const Fetchrequests = ({ requestId }) => {
             }
             seton(re);
             if (on) {
-                console.log(on);
                 fetchBlogurl(on[2]);
             }
 
@@ -46,7 +46,7 @@ const Fetchrequests = ({ requestId }) => {
     }, [data]);
 
     const fetchBlogurl = async (uri) => {
-        console.log("a");
+
         if (uri != undefined) {
             const res = await axios.get(uri);
             const externalUrl = res.data.externalUrl.toString();
@@ -67,11 +67,10 @@ const Fetchrequests = ({ requestId }) => {
     return (
         <div>
             {blogsContent ? (<div> <h2>{blogsContent.title}</h2>
-                <h3>{blogsContent.text}</h3>
-                <h3>{blogsContent.externalUrl}</h3>
-                <h3>ArticleId:{on[1].toNumber()}</h3>
-                <h3>Address voted:{on[3]}</h3>
-                <h3>Total amount:{on[4]}</h3>
+                <p>{blogsContent.text}</p>
+                <p>IPFS Content address :{blogsContent.externalUrl}</p>
+                <p>ArticleId: {on[1].toNumber()}</p>
+                <p>Total amount:{on[3]}</p>
                 <br></br>
             </div>) : (<div></div>)}
         </div>
