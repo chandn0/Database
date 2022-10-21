@@ -3,7 +3,7 @@ export const Url = "https://ipfs.io/ipfs";
 export const logoM = "https://ipfs.io/ipfs/QmWEsG4ayh75BMk2H1CowAdALPjsi3fD7CSZ6qxNM1yNnz/image/moralis.png";
 
 export const sampleURI = "https://ipfs.io/ipfs/Qmd7DuscoYu3bqBavGxcxvoR1yZDhp8B4sNncyorZphucM"
-export const contractlocation = "0x9C3dFd5bd35560d0A8e90ac91Ac0Aba1cF1aaac7";
+export const contractlocation = "0xD829BE5f9627a52011Ec397447A1e771372674C1";
 export const contractabi = [
     {
         "inputs": [
